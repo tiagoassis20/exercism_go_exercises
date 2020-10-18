@@ -2,7 +2,7 @@ package erratum
 
 func Use(o ResourceOpener, input string) (err error) {
 	resource, err := o()
-	
+
 	for err != nil {
 		if _, ok := err.(TransientError); !ok {
 			return
@@ -26,7 +26,7 @@ func Use(o ResourceOpener, input string) (err error) {
 		}
 	}()
 
-	resource.Frob(input),
+	resource.Frob(input)
 
 	return
 
