@@ -2,7 +2,7 @@ package flatten
 
 func Flatten(input interface{}) []interface{} {
 	if v, ok := input.([]interface{}); ok {
-		ret := make([]interface{}, 0, 20)
+		ret := []interface{}{}
 		for _, e := range v {
 			for _, el := range Flatten(e) {
 				if el != nil {
