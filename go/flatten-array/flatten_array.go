@@ -1,17 +1,19 @@
 package flatten
 
 func Flatten(input interface{}) []interface{} {
+	return flatten([]interface{}{}, input)
+}
+
+func flatten(base []interface{}, input interface{}) (ret []interface{}) {
+	ret = base
 	if v, ok := input.([]interface{}); ok {
-		ret := []interface{}{}
 		for _, e := range v {
-			for _, el := range Flatten(e) {
-				if el != nil {
-					ret = append(ret, el)
-				}
-			}
+			ret = flatten(ret, e)
 		}
-		return ret
 	} else {
-		return []interface{}{input}
+		if input != nil {
+			ret = append(ret, input)
+		}
 	}
+	return
 }
